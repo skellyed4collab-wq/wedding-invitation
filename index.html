@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دعوة زفاف</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #faf7f2;
+      color: #333;
+      text-align: center;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+    }
+
+    .heart {
+      font-size: 55px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .names {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .date {
+      font-size: 20px;
+      margin-bottom: 35px;
+    }
+
+    .countdown {
+      display: flex;
+      gap: 12px;
+      direction: ltr;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .box {
+      background: white;
+      padding: 18px;
+      min-width: 75px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .number {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .label {
+      font-size: 13px;
+      margin-top: 5px;
+      color: #777;
+    }
+
+    section {
+      padding: 70px 25px;
+    }
+
+    section h2 {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+
+    .message {
+      max-width: 600px;
+      margin: auto;
+      line-height: 2;
+      font-size: 18px;
+    }
+
+    footer {
+      padding: 30px;
+      background: #eee8df;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="hero">
+    <div class="heart">♡</div>
+
+    <h1>دعوة زفاف</h1>
+
+    <div class="names">
+      آدم & سارة
+    </div>
+
+    <div class="date">
+      25 ديسمبر 2026
+    </div>
+
+    <div class="countdown">
+      <div class="box">
+        <div class="number" id="days">0</div>
+        <div class="label">يوم</div>
+      </div>
+
+      <div class="box">
+        <div class="number" id="hours">0</div>
+        <div class="label">ساعة</div>
+      </div>
+
+      <div class="box">
+        <div class="number" id="minutes">0</div>
+        <div class="label">دقيقة</div>
+      </div>
+
+      <div class="box">
+        <div class="number" id="seconds">0</div>
+        <div class="label">ثانية</div>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <h2>♡ لحظاتنا</h2>
+
+    <p class="message">
+      يسعدنا أن نشارككم أجمل يوم في حياتنا،
+      ونتمنى أن تكونوا معنا لنحتفل بهذه الذكرى الجميلة.
+    </p>
+  </section>
+
+  <section>
+    <h2>📍 مكان الحفل</h2>
+
+    <p class="message">
+      قاعة الأفراح<br>
+      المسيلة - الجزائر
+    </p>
+  </section>
+
+  <footer>
+    مع حبنا ❤️
+  </footer>
+
+  <script>
+    const weddingDate = new Date("December 25, 2026 18:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      if (distance <= 0) {
+        document.querySelector(".countdown").innerHTML =
+          "<h2>🎉 حان وقت الاحتفال!</h2>";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) /
+        (1000 * 60 * 60)
+      );
+      const minutes = Math.floor(
+        (distance % (1000 * 60 * 60)) /
+        (1000 * 60)
+      );
+      const seconds = Math.floor(
+        (distance % (1000 * 60)) / 1000
+      );
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>
